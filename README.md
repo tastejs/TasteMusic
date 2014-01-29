@@ -4,7 +4,7 @@
 
 Music recommendations by JavaScripters. Because, reasons :)
 
-[Suggest a playlist or track](https://github.com/tastejs/TasteMusic/issues/1) by commenting on the thread.
+[Suggest a playlist, album or track](https://github.com/tastejs/TasteMusic/issues/1) by commenting on the thread.
 
 ![](music-monster.png)
 
