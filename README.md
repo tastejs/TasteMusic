@@ -1,6 +1,8 @@
 # [TasteMusic](https://github.com/tastejs/TasteMusic/issues/1)
 
-> Music recommendations by JavaScripters. Because, reasons :)
+> Empowering your MDD (Music Driven Development)
+
+Music recommendations by JavaScripters. Because, reasons :)
 
 [Suggest a playlist or track](https://github.com/tastejs/TasteMusic/issues/1) by commenting on the thread.
 
