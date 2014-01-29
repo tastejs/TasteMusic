@@ -1,7 +1,7 @@
-TasteMusic
-==========
+# [TasteMusic](https://github.com/tastejs/TasteMusic/issues/1)
 
-Music recommendations by JavaScripters. Because, reasons :)
+> Music recommendations by JavaScripters. Because, reasons :)
+
 
 ## Contributing
 
