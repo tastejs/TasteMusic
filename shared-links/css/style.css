@@ -8,11 +8,29 @@ body {
 }
 .app-title {
   background: rgba(211, 36, 43, 0.89);
-  padding: .5em;
+  padding: .4em;
   margin: 0;
   margin-bottom: 1em;
   color: #FCFCFC;  
 }
-ul, ol {
-  padding-left: 2em;
+
+#shared-links ol {
+  padding: 0;
+  list-style: none;
+}
+#shared-links li {
+  background: rgba(67, 20, 119, 0.03);
+  margin-bottom: 2px;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  transition: .2s;
+}
+#shared-links li:hover {
+  background: rgba(67, 20, 119, 0.1);
+}
+#shared-links a {
+  color: #88345C;
+  text-decoration: none;
+  display: block;
+  padding: 0.3em .6em;
 }
