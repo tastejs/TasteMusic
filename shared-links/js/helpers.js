@@ -58,7 +58,7 @@
       var xhr;
 
       // Bypass cache by adding timestamp at the end of the url.
-      var url = options.url + ((/\?/).test(url) ? "&" : "?") + (+(new Date));
+      var url = options.url + ((/\?/).test(options.url) ? "&" : "?") + (+(new Date));
 
       // Only modern Browsers!
       if (window.XMLHttpRequest) {

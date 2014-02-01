@@ -1,7 +1,7 @@
 ;(function(_, window, undefined) {
   'use strict';
 
-  function CommentParser(options) {
+  function CommentsParser(options) {
     // Initial endpoint
     this.url = options.url;
 
@@ -13,8 +13,8 @@
     this.linkList = document.createElement('ol');
   }
 
-  CommentParser.prototype = {
-    constructor: CommentParser,
+  CommentsParser.prototype = {
+    constructor: CommentsParser,
 
     init: function() {
       var pageNum = location.search.split('=')[1];
@@ -113,5 +113,5 @@
     }
   };
 
-  window.app.CommentParser = CommentParser;
+  window.app.CommentsParser = CommentsParser;
 }(_, window));
