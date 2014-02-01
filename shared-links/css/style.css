@@ -1,11 +1,18 @@
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+/*
+ * App Styles
+ */
+body {
+  background: url('../../../music-monster.png') no-repeat 85% 73%;
+  background-size: 45%;
+  background-attachment: fixed;
 }
-.container {
-  padding: 0 10%;
+.app-title {
+  background: rgba(211, 36, 43, 0.89);
+  padding: .67em;
+  margin: 0;
+  margin-bottom: 1em;
+  color: #FCFCFC;  
 }
-.error {
-  color: red;
+ul, ol {
+  padding-left: 2em;
 }
