@@ -41,7 +41,7 @@
             if (self.comments.length > 0) {
               self.buildHTML();
             } else {
-              self.container.innerHTML = 'No links are available for this page.';
+              self.container.innerHTML = 'No more links are available.';
             }
           }
         },
