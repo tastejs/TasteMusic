@@ -11,7 +11,6 @@ module.exports = function(grunt) {
       css_concat: {
         files: {
           'dist/css/style.min.css': [
-            'css/normalize.css',
             'css/style.css'
           ]
         }
