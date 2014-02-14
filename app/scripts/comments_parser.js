@@ -1,29 +1,88 @@
 ;(function(_, window, undefined) {
   'use strict';
 
+  // The result object after we're done parsing the URLs.
+  var result = {
+    htmlList: document.createElement('ol'),
+
+    array: [], // all of the links
+
+    hash: { // links in categories
+      'soundcloud': [],
+      'youtube': [],
+      'other': []
+    }
+  };
+
+
+  // Returns true if a URL matches any of the provided domain names.
+  var domainMatch = function(url, domains) {
+    var r = false, url = url.toLowerCase();
+
+    if (_.isString(domains)) {
+      return url.indexOf(domains) > 1 ? true : false;
+    }
+
+    _.each(domains, function(domain) {
+      if (url.indexOf(domain) > 1) {
+        r = true;
+      }
+    });
+   
+    return r;
+  }
+
+
+  var item; // Creates a list-item with a link for each URL.
+  function buildList(url) {
+    item = document.createElement('li');
+    item.innerHTML = '<a href="'+url+'" target="_blank">' + url + '</a>';
+    result.htmlList.appendChild(item);
+  }
+
+
+  // Builds a hash of URLs categorized by domain names.
+  function buildHash(url) {
+    if(domainMatch(url, 'soundcloud.com')) {
+      result.hash['soundcloud'].push(url);
+    } else if(domainMatch(url, ['youtube.com', 'youtu.be'])) {
+      result.hash['youtube'].push(url);
+    } else {
+      result.hash['other'].push(url);
+    }
+  }
+
+
+  function addToCollections(url) {
+    buildHash(url);
+    buildList(url);
+  }
+
+
   function CommentsParser(options) {
-    // Initial endpoint
-    this.url = options.url;
+    this.options = options;
 
     // The comments in the opened issue
     this.comments = null;
-
-    // DOM elements
-    this.container = options.container;
-    this.linkList = document.createElement('ol');
   }
 
   CommentsParser.prototype = {
     constructor: CommentsParser,
 
-    init: function() {
-      var pageNum = location.search.split('=')[1];
-      this.getPage(pageNum > 1 ? pageNum : false);
+    // Parses comments from the first
+    // page of the paginated comments.
+    parse: function() {
+      this.getPage();
+    },
+
+    // Parses all comments, including the paginated ones.
+    parseAll: function() {
+      // TODO
     },
 
     getPage: function(num) {
       var self = this;
-      var endpoint = self.url;
+      var endpoint = self.options.url;
 
       // Get paginated comments
       if (num) {
@@ -39,15 +98,15 @@
             self.comments = JSON.parse(data);
 
             if (self.comments.length > 0) {
-              self.buildHTML();
+              self.build();
             } else {
-              self.container.innerHTML = 'No more links are available.';
+              self.options.fail('No more links are available.');
             }
           }
         },
 
         error: function(xhr, status, statusText) {
-          self.container.innerHTML = status + ' ' + statusText;
+          self.options.fail(status + ' ' + statusText);
         }
       });
     },
@@ -79,9 +138,9 @@
       return URLs;
     },
 
-    buildHTML: function() {
+    build: function() {
       var self = this;
-      var comment_urls, item;
+      var comment_urls;
       var currentLength = 0;
       var commentsLength = self.comments.length;
 
@@ -89,27 +148,26 @@
       _.each(self.comments, function(comment) {
         comment_urls = self.collectUrls(comment['body']);
 
-        // For each url in comment build a list item & a link
-        _.each(comment_urls, function(url) {
-          item = document.createElement('li');
-          item.innerHTML = '<a href="'+url+'" target="_blank">' + url + '</a>';
-          self.linkList.appendChild(item);
-        });
+        // Simply concat them to the result array
+        result.array = result.array.concat(comment_urls);
+
+        // Each URL in the comment is added to a  
+        // collection type in the result object
+        _.each(comment_urls, addToCollections);
 
         currentLength += 1;
 
         // Are we done?
         if (currentLength == commentsLength) {
-          self.render();
+          self.complete();
           return;
         }
       });
     },
 
-    render: function() {
-      // We must take into account pagination
+    complete: function() {
       console.log('Parsed URLs from ' + this.comments.length + ' comments!');
-      this.container.innerHTML = this.linkList.outerHTML;
+      this.options.done(result);
     }
   };
 
