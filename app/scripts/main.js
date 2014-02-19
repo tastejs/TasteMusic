@@ -1,13 +1,8 @@
+/*jslint indent: false, global app: false */
 ;(function(_, window, undefined) {
   'use strict';
 
   var output = document.getElementById('shared-links');
-
-  new app.CommentsParser({
-    url: 'https://api.github.com/repos/tastejs/TasteMusic/issues/1/comments',
-    done: parseDone,
-    fail: parseFail
-  }).parse();
 
 
   // The sharedLinks are available here.
@@ -24,4 +19,11 @@
       output.innerHTML = errMessage;
     }
   }
+  
+  new window.app.CommentsParser({
+    url: 'https://api.github.com/repos/tastejs/TasteMusic/issues/1/comments',
+    done: parseDone,
+    fail: parseFail
+  }).parse();
+
 }(_, window));

@@ -5,7 +5,8 @@
     "bootstrap-sass": "git://github.com/twbs/bootstrap-sass.git#v3.1.1",
     "modernizr": "~2.6.2",
     "jquery": "~1.11.0",
-    "underscore": "1.6.0"
+    "underscore": "1.6.0",
+    "get-urls": "0.1.1"
   },
   "devDependencies": {}
 }

@@ -137,9 +137,6 @@ module.exports = function (grunt) {
             }
         },
 
-
-
-
         // Compiles Sass to CSS and generates necessary files if requested
         compass: {
             options: {
@@ -304,10 +301,10 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '.htaccess',
-                        'images/{,*/}*.webp',
+                        'images/{,*/}*',
                         '{,*/}*.html',
                         'styles/fonts/{,*/}*.*',
-                        'bower_components/' + (this.includeCompass ? 'sass-' : '') + 'bootstrap/' + (this.includeCompass ? 'fonts/' : 'dist/fonts/') +'*.*'
+                        'bower_components/bootstrap/vendor/assets/fonts/bootstrap/fonts/*.*'
                     ]
                 }]
             },

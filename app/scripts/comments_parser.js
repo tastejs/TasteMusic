@@ -1,5 +1,8 @@
+/*jslint indent: false, global app: true */
 ;(function(_, window, undefined) {
   'use strict';
+
+  var app = window.app;
 
   // The result object after we're done parsing the URLs.
   var result = {
@@ -16,8 +19,8 @@
 
 
   // Returns true if a URL matches any of the provided domain names.
-  var domainMatch = function(url, domains) {
-    var r = false, url = url.toLowerCase();
+  var domainMatch = function(URL, domains) {
+    var r = false, url = URL.toLowerCase();
 
     if (_.isString(domains)) {
       return url.indexOf(domains) > 1 ? true : false;
@@ -30,7 +33,7 @@
     });
    
     return r;
-  }
+  };
 
 
   var item; // Creates a list-item with a link for each URL.
@@ -90,10 +93,10 @@
       }
 
       // Send ajax
-      app.http.get({
+      new app.http.get({
         url: endpoint,
 
-        success: function(data, status, statusText) {
+        success: function(data, status /*, statusText*/) {
           if (data && status === 200) {
             self.comments = JSON.parse(data);
 
@@ -112,16 +115,16 @@
     },
 
     // Collect URLs from a single chunk of string
-    collectUrls: function(string_chunk) {
-      var string_lines = [];
+    collectUrls: function(stringChunk) {
+      var stringLines = [];
       var words = [];
       var URLs = [];
 
       // Split on new lines
-      string_lines = string_chunk.split(app.regex.newline);
+      stringLines = stringChunk.split(app.regex.newline);
 
       // Get words out of each line
-      _.each(_.compact(string_lines), function(line) {
+      _.each(_.compact(stringLines), function(line) {
         words.push(line.split(app.regex.space));
       });
 
@@ -140,25 +143,25 @@
 
     build: function() {
       var self = this;
-      var comment_urls;
+      var commentUrls;
       var currentLength = 0;
       var commentsLength = self.comments.length;
 
       // Collect urls from comment's body
       _.each(self.comments, function(comment) {
-        comment_urls = self.collectUrls(comment['body']);
+        commentUrls = self.collectUrls(comment['body']);
 
         // Simply concat them to the result array
-        result.array = result.array.concat(comment_urls);
+        result.array = result.array.concat(commentUrls);
 
         // Each URL in the comment is added to a  
         // collection type in the result object
-        _.each(comment_urls, addToCollections);
+        _.each(commentUrls, addToCollections);
 
         currentLength += 1;
 
         // Are we done?
-        if (currentLength == commentsLength) {
+        if (currentLength === commentsLength) {
           self.complete();
           return;
         }
