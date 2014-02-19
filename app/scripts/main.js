@@ -2,6 +2,7 @@
 ;(function(_, window, undefined) {
   'use strict';
 
+
   var output = document.getElementById('shared-links');
 
 
@@ -9,8 +10,10 @@
   function parseDone(result) {
     if (result && _.isObject(result)) {
       output.innerHTML = result.htmlList.outerHTML;
-
       console.log(result);
+
+      window.app.Player.updatePlaylist();
+
     }
   }
 

@@ -45,6 +45,14 @@
                 <p><a class="btn btn-lg btn-success" href="https://github.com/tastejs/TasteMusic/issues/1" target="_blank">Share Your Music</a></p>
             </div>
 
+            <a href="https://soundcloud.com/tfr-royal/of-monsters-and-men-dirty-paws" title="Play Track" class="track">Play Track</a> 
+
+
+            <div class="sm2-container">
+                <div class="ui360">
+                </div>
+            </div>
+
             <div class="row marketing">
                 <h3>List of Tracks</h3>
                 <div class="col-md-12" id="shared-links">
@@ -64,7 +72,10 @@
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/get-urls/get-urls.js"></script>
+        <script src="bower_components/soundmanager/script/soundmanager2-nodebug-jsmin.js"></script>
+        <script src="bower_components/soundmanager/demo/mp3-player-button/script/mp3-player-button.js"></script>
         <!-- endbower -->
+        <script src="http://connect.soundcloud.com/sdk.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -95,6 +106,7 @@
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/helpers.js"></script>
         <script src="scripts/comments_parser.js"></script>
+        <script src="scripts/player.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>

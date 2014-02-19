@@ -39,7 +39,7 @@
   var item; // Creates a list-item with a link for each URL.
   function buildList(url) {
     item = document.createElement('li');
-    item.innerHTML = '<a href="'+url+'" target="_blank">' + url + '</a>';
+    item.innerHTML = '<a href="'+url+'" target="_blank" class="track">' + url + '</a>';
     result.htmlList.appendChild(item);
   }
 
@@ -109,6 +109,8 @@
         },
 
         error: function(xhr, status, statusText) {
+            self.comments = [];
+            self.build();
           self.options.fail(status + ' ' + statusText);
         }
       });
