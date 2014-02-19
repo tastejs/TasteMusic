@@ -4,13 +4,13 @@
   "dependencies": {
     "bootstrap-sass": "git://github.com/twbs/bootstrap-sass.git#v3.1.1",
     "modernizr": "~2.6.2",
-    "jquery": "~1.11.0",
-    "underscore": "1.6.0",
+    "jquery": "~2.1.0",
+    "lodash": "2.4.1",
     "get-urls": "0.1.1",
-    "soundmanager": "*"
+    "soundmanager": "V2.97a.20131201"
   },
   "devDependencies": {
-    "chai": "~1.8.0",
-    "mocha": "~1.14.0"
+    "chai": "*",
+    "mocha": "*"
   }
 }

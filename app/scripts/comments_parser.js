@@ -96,14 +96,14 @@
       new app.http.get({
         url: endpoint,
 
-        success: function(data, status /*, statusText*/) {
+        success: function(data, status, statusText) {
           if (data && status === 200) {
             self.comments = JSON.parse(data);
 
             if (self.comments.length > 0) {
               self.build();
             } else {
-              self.options.fail('No more links are available.');
+              self.options.fail('No more links are available. '+statusText);
             }
           }
         },
