@@ -2,10 +2,15 @@
   "name": "tastemusic",
   "private": true,
   "dependencies": {
-    "sass-bootstrap": "~3.0.0",
+    "bootstrap-sass": "git://github.com/twbs/bootstrap-sass.git#v3.1.1",
     "modernizr": "~2.6.2",
-    "jquery": "~1.10.2",
-    "underscore": "1.6.0"
+    "jquery": "~2.1.0",
+    "lodash": "2.4.1",
+    "get-urls": "0.1.1",
+    "soundmanager": "V2.97a.20131201"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  }
 }

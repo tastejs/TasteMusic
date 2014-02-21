@@ -18,6 +18,7 @@
     "trailing": true,
     "smarttabs": true,
     "jquery": true,
+    "sub": true,
     "predef": [
         // Third-Party
         "_",
